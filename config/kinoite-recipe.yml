@@ -1,5 +1,5 @@
 # image will be published to ghcr.io/<user>/<name>
-name: lanse
+name: lanse-kinoite
 # description will be included in the image's metadata
 description: A personal fork of ublue kinoite, just the way I like it!
 
@@ -22,7 +22,5 @@ modules:
   - from-file: kinoite-packages.yml
   - from-file: common-packages.yml
   - from-file: common.yml
-  #- from-file: common-bling.yml
+  - from-file: common-flatpaks.yml
 
-  #- from-file: common-flatpaks.yml
-  #- from-file: common-scripts.yml

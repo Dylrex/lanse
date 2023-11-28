@@ -1,6 +1,7 @@
 type: yafti # if included, yafti and it's dependencies (pip & libadwaita)
                 #  will be installed and set up
-  custom-flatpaks: # this section is optional
-    brave-browser
+custom-flatpaks: # this section is optional
+    - Firefox: org.mozilla.firefox
+    - Brave Browser: com.brave.Browser
     # - Celluloid: io.github.celluloid_player.Celluloid
     # - Krita: org.kde.krita
