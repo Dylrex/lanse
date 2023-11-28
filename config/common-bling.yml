@@ -1,6 +1,6 @@
 type: bling # configure what to pull in from ublue-os/bling
-    install:
-      - justfiles # add "!include /usr/share/ublue-os/just/100-bling.just"
+install:
+  - justfiles # add "!include /usr/share/ublue-os/just/100-bling.just"
                   # in your custom.just (added by default) or local justfile
       # - nix-installer # shell shortcuts for determinate system's nix installers
       # - ublue-os-wallpapers
