@@ -1,10 +1,10 @@
 # image will be published to ghcr.io/<user>/<name>
-name: lanse
+name: lanse-silverblue
 # description will be included in the image's metadata
-description: A personal fork of ublue kinoite, just the way I like it!
+description: A personal fork of ublue silverblue, just the way I like it!
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/kinoite-main
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 39 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -19,10 +19,8 @@ modules:
                   # configuration you wish to end up in /etc/ on the booted system
                   # should be added into /usr/etc/ as that is the proper "distro"
                   # config directory on ostree. Read more in the files module's README
-  #- from-file: kinoite-packages.yml
   - from-file: common-packages.yml
 
   - from-file: common-bling.yml
 
-  #- from-file: common-flatpaks.yml
   - from-file: common-scripts.yml
