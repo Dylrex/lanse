@@ -23,5 +23,4 @@ modules:
   - from-file: common-packages.yml
   - from-file: common.yml
   - from-file: common-flatpaks.yml
-  - from-file: silverblue-flatpaks.yml
 

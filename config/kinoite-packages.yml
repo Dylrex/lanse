@@ -7,4 +7,4 @@ install:
   - fcitx5-chinese-addons
   - fcitx5-hangul
 remove:
-# - balh
+# - blahblah
