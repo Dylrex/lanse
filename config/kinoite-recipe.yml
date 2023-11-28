@@ -21,8 +21,8 @@ modules:
                   # config directory on ostree. Read more in the files module's README
   - from-file: kinoite-packages.yml
   - from-file: common-packages.yml
-
+  - from-file: common.yml
   #- from-file: common-bling.yml
 
   #- from-file: common-flatpaks.yml
-  - from-file: common-scripts.yml
+  #- from-file: common-scripts.yml
