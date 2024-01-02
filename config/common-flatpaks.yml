@@ -10,6 +10,6 @@ custom-flatpaks: # this section is optional
     - Flatseal: com.github.tchx84.Flatseal
     - GIMP: org.gimp.GIMP
     - Obsidian: md.obsidian.Obsidian
-    - mpv: io.mpv.Mpv
-    # - Celluloid: io.github.celluloid_player.Celluloid
+    #- mpv: io.mpv.Mpv
+    - Celluloid: io.github.celluloid_player.Celluloid
     # - Krita: org.kde.krita
