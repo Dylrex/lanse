@@ -82,8 +82,9 @@ screens:
           description: System applications for all desktop environments.
           default: true
           packages:
-            - Deja Dup Backups: org.gnome.DejaDup
+           # - Deja Dup Backups: org.gnome.DejaDup
             - Fedora Media Writer: org.fedoraproject.MediaWriter
+            - Pika Backup: org.gnome.World.PikaBackup
             - Flatseal (Permission Manager): com.github.tchx84.Flatseal
             - Font Downloader: org.gustavoperedo.FontDownloader
             - Mozilla Firefox: org.mozilla.firefox
