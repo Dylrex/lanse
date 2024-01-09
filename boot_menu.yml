@@ -2,4 +2,7 @@ ublue_variants:
   - label: dylrex/lanse
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: lanse
+      - label: lanse-silverblue
+        info: GNOME
+      - label: lanse-kinoite
+        info: KDE

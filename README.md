@@ -2,7 +2,7 @@
 
 [![build-ublue](https://github.com/Dylrex/lanse/actions/workflows/build.yml/badge.svg)](https://github.com/Dylrex/lanse/actions/workflows/build.yml)
 
-This is a constantly updating repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) personalised to my use case. GitHub builds the image automatically, and then hosts it on [ghcr.io](https://github.com/features/packages). My computer automatically boots off the latest image. GitHub keeps 90 days worth of image backups for you, thanks Microsoft!
+Lanse (蓝色) is a constantly updating repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) personalised to my use case. GitHub builds the image automatically, and then hosts it on [ghcr.io](https://github.com/features/packages). My computer automatically boots off the latest image. GitHub keeps 90 days worth of image backups for you, thanks Microsoft!
 
 For more info, check out the [uBlue homepage](https://universal-blue.org/) and the [main uBlue repo](https://github.com/ublue-os/main/)
 
