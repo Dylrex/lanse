@@ -1,5 +1,5 @@
 ublue_variants:
-  - label: dylrex/lanse
+  - label: dy0x/lanse
     ks: /kickstart/ublue-os.ks
     flavors:
       - label: lanse-silverblue
