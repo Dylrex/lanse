@@ -1,19 +1,21 @@
 # Legacy template [![build-ublue](https://github.com/blue-build/legacy-template/actions/workflows/build.yml/badge.svg)](https://github.com/blue-build/legacy-template/actions/workflows/build.yml)
 
-> **Warning**  
-> This repository was previously `ublue-os/startingpoint`, but has now been [moved to the BlueBuild organization](https://blue-build.org/blog/introducing-bluebuild/). New custom images should be created from the new [blue-build/template](https://github.com/blue-build/template), but this repository will be supported for the foreseeable future.  
-> Check out the [migration guide](https://blue-build.org/blog/introducing-bluebuild/#how-to-migrate) for migration instructions.
+[![build-ublue](https://github.com/dy0x/lanse/actions/workflows/build.yml/badge.svg)](https://github.com/dy0x/lanse/actions/workflows/build.yml)
+
+Lanse (蓝色) is a constantly updating repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) personalised to my use case. GitHub builds the image automatically, and then hosts it on [ghcr.io](https://github.com/features/packages). My computer automatically boots off the latest image. GitHub keeps 90 days worth of image backups, thanks Microsoft!
+
+For more info, check out the [uBlue homepage](https://universal-blue.org/) and the [main uBlue repo](https://github.com/ublue-os/main/)
 
 ## Installation
 
-> **Warning**  
+> **Warning**
 > [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
 
 To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/blue-build/legacy-template:latest
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/dy0x/lanse-silverblue:latest
   ```
 - Reboot to complete the rebase:
   ```
@@ -21,7 +23,7 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
 - Then rebase to the signed image, like so:
   ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/blue-build/legacy-template:latest
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/dy0x/lanse-silverblue:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -29,6 +31,7 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+
 
 ## ISO
 
