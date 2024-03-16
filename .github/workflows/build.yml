@@ -4,7 +4,7 @@
 # Only the branch called `live` is published.
 
 
-name: build-lanse
+name: build-ublue
 on: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
   schedule:
     - cron: "30 16 * * *"
@@ -39,8 +39,7 @@ jobs:
         # Add recipes for all the images you want to build here.
         # Don't add module configuration files, you will get errors.
         recipe:
-          - kinoite-recipe.yml
-          - silverblue-recipe.yml
+          - recipe.yml
 # !!!
 
     steps:
@@ -71,7 +70,7 @@ jobs:
           fi
 
       - name: Add yq (for reading recipe.yml)
-        uses: mikefarah/yq@v4.40.5
+        uses: mikefarah/yq@v4.42.1
 
       - name: Gather image data from recipe
         run: |

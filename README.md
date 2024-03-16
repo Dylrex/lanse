@@ -1,21 +1,19 @@
-# Starting point
+# Legacy template [![build-ublue](https://github.com/blue-build/legacy-template/actions/workflows/build.yml/badge.svg)](https://github.com/blue-build/legacy-template/actions/workflows/build.yml)
 
-[![build-ublue](https://github.com/dy0x/lanse/actions/workflows/build.yml/badge.svg)](https://github.com/dy0x/lanse/actions/workflows/build.yml)
-
-Lanse (蓝色) is a constantly updating repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) personalised to my use case. GitHub builds the image automatically, and then hosts it on [ghcr.io](https://github.com/features/packages). My computer automatically boots off the latest image. GitHub keeps 90 days worth of image backups, thanks Microsoft!
-
-For more info, check out the [uBlue homepage](https://universal-blue.org/) and the [main uBlue repo](https://github.com/ublue-os/main/)
+> **Warning**  
+> This repository was previously `ublue-os/startingpoint`, but has now been [moved to the BlueBuild organization](https://blue-build.org/blog/introducing-bluebuild/). New custom images should be created from the new [blue-build/template](https://github.com/blue-build/template), but this repository will be supported for the foreseeable future.  
+> Check out the [migration guide](https://blue-build.org/blog/introducing-bluebuild/#how-to-migrate) for migration instructions.
 
 ## Installation
 
-> **Warning**
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) and should not be used in production, try it in a VM for a while!
+> **Warning**  
+> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
 
 To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/dy0x/lanse-silverblue:latest
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/blue-build/legacy-template:latest
   ```
 - Reboot to complete the rebase:
   ```
@@ -23,20 +21,12 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
 - Then rebase to the signed image, like so:
   ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/dy0x/lanse-silverblue:latest
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/blue-build/legacy-template:latest
   ```
 - Reboot again to complete the installation
   ```
   systemctl reboot
   ```
-
-This repository builds date tags as well, so if you want to rebase to a particular day's build:
-
-```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/dy0x/lanse-silverblue:20230403
-```
-
-This repository by default also supports signing.
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
@@ -46,34 +36,14 @@ This template includes a simple Github Action to build and release an ISO of you
 
 To run the action, simply edit the `boot_menu.yml` by changing all the references to startingpoint to your repository. This should trigger the action automatically.
 
-The Action uses [isogenerator](https://github.com/ublue-os/isogenerator) and works in a similar manner to the official Universal Blue ISO. If you have any issues, you should first check [the documentation page on installation](https://universal-blue.org/installation/). The ISO is a netinstaller and should always pull the latest version of your image.
+The Action currently uses [ublue-os/isogenerator-old](https://github.com/ublue-os/isogenerator-old) and works in a similar manner to the official Universal Blue ISO. If you have any issues, you should first check [the documentation page on installation](https://universal-blue.org/installation/). The ISO is a netinstaller and should always pull the latest version of your image.
 
 Note that this release-iso action is not a replacement for a full-blown release automation like [release-please](https://github.com/googleapis/release-please).
 
-## Customization
+## Verification
 
-The easiest way to start customizing is by looking at and modifying `config/recipe.yml`. It's documented using comments and should be pretty easy to understand.
+These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
 
-If you want to add custom configuration files, you can just add them in the `/usr/etc/` directory, which is the official OSTree "configuration template" directory and will be applied to `/etc/` on boot. `config/files/usr` is copied into your image's `/usr` by default. If you need to add other directories in the root of your image, that can be done using the `files` module. Writing to `/var/` in the image builds of OSTree-based distros isn't supported and will not work, as that is a local user-managed directory!
-
-For more information about customization, see [the README in the config directory](config/README.md)
-
-Documentation around making custom images exists / should be written in two separate places:
-* [The Tinkerer's Guide on the website](https://universal-blue.org/tinker/make-your-own/) for general documentation around making custom images, best practices, tutorials, and so on.
-* Inside this repository for documentation specific to the ins and outs of the template (like module documentation), and just some essential guidance on how to make custom images.
-
-## `just`
-
-The [`just`](https://just.systems/) command runner is included in all `ublue-os/main`-derived images.
-
-You need to have a `~/.justfile` with the following contents and `just` aliased to `just --unstable` (default in posix-compatible shells on ublue) to get started with just locally.
+```bash
+cosign verify --key cosign.pub ghcr.io/blue-build/legacy-template
 ```
-!include /usr/share/ublue-os/just/main.just
-!include /usr/share/ublue-os/just/nvidia.just
-!include /usr/share/ublue-os/just/custom.just
-```
-Then type `just` to list the just recipes available.
-
-The file `/usr/share/ublue-os/just/custom.just` is intended for the custom just commands (recipes) you wish to include in your image. By default, it includes the justfiles from [`ublue-os/bling`](https://github.com/ublue-os/bling), if you wish to disable that, you need to just remove the line that includes bling.just.
-
-See [the just-page in the Universal Blue documentation](https://universal-blue.org/guide/just/) for more information.
